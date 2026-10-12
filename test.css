@@ -1,0 +1,507 @@
+/* --- Global Reset & Base --- */
+:root {
+  --bg-color: #f4f6fb;
+  --dark-bg: #0f172a;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --accent-1: #8b5cf6; 
+  --accent-2: #3b82f6;
+  --gradient-main: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 10px 30px rgba(139, 92, 246, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* --- Layout --- */
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* --- Sidebar (Rich Dark Theme) --- */
+.sidebar {
+  width: 280px;
+  background: var(--dark-bg);
+  background-image: radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.2) 0%, transparent 30%);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  overflow-y: auto;
+  border-right: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2.5rem;
+  padding-left: 0.5rem;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-main);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+.logo h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* The "New Chat" Button - Vibrant Gradient */
+.new-chat {
+  background: var(--gradient-main);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 2.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.new-chat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+}
+
+.section-title {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 1.5rem 0 0.8rem 0.5rem;
+  font-weight: 600;
+}
+
+.chat-item, .chat-item1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.chat-item:hover, .chat-item1:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.chat-item span:last-child, .chat-item1 span:last-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+/* --- Main Content Area --- */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* FIXED: Removed the duplicate padding */
+.main-content {
+  flex: 1;
+  padding: 2.5rem 3rem; 
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* FIXED: Added header container so the title and button don't overlap the card */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.page-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #1e293b, #334155);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* FIXED: Button is now in normal flow (not absolute) */
+.toggle-panel-btn {
+  position: absolute; /* Button ko fixed kar diya top right par */
+  top: 2.5rem; /* Top se distance */
+  right: 3rem; /* Right side se distance (main-content ke padding ke hisaab se) */
+  background: white;
+  color: var(--text-main);
+  border: 1px solid #e2e8f0;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.toggle-panel-btn:hover {
+  background: var(--bg-color);
+  border-color: var(--accent-1);
+  transform: translateY(-2px);
+}
+
+/* --- Cards (Premium Glassmorphism & Depth) --- */
+.summary-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0; 
+}
+
+.summary-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gradient-main);
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.summary-left {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.summary-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--gradient-main);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2);
+}
+
+.summary-left h3 {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.summary-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.priority {
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 8px 14px;
+  border-radius: 30px;
+  border: 1px solid #fecaca;
+}
+
+.summary-card p {
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+}
+
+.btn1 {
+  background: var(--gradient-main);
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  transition: transform 0.2s;
+}
+
+.btn1:hover {
+  transform: translateX(3px);
+}
+
+/* --- The Two Columns Grid --- */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; 
+  margin-bottom: 2rem;
+}
+
+/* FIXED: Limited the height so it doesn't look too tall */
+.intel-card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem; 
+  box-shadow: var(--card-shadow);
+  border: 1px solid #e2e8f0;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  max-height: 450px; 
+  overflow: hidden;
+}
+
+.intel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.intel-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.intel-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.intel-icon.blue {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+  color: #2563eb;
+}
+
+.intel-icon.green {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+  color: #16a34a;
+}
+
+.intel-top h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.intel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.intel-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  line-height: 1.5;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.dot {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.btn-blue, .btn-green {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  color: var(--accent-1);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.btn-blue:hover { color: #2563eb; }
+.btn-green:hover { color: #16a34a; }
+
+/* --- The Prompt Box (Elegant Floating Input) --- */
+.question-box {
+  position: relative;
+  background: white;
+  border-radius: 50px; /* Bilkul pill shape (rounded) */
+  padding: 0.4rem 0.5rem; /* Thori aur kam padding */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Thora halka shadow */
+  border: 1px solid #e2e8f0;
+  max-width: 750px; /* Horizontal length yahan set karein (kam ki hui hai) */
+  width: 90%; /* Mobile par choti ho jayegi */
+  display: flex;
+  align-items: center;
+  margin: 0 auto; /* Center mein rakhne ke liye */
+}
+
+.question-box input {
+  flex: 1;
+  padding: 8px 12px; /* Input ki height kam ki */
+  border: none;
+  background: transparent;
+  font-size: 0.95rem; /* Font size thora chhota */
+  outline: none;
+}
+
+.send-btn {
+  width: 36px; /* Button bilkul chota */
+  height: 36px;
+  background: var(--gradient-main);
+  border: none;
+  border-radius: 50%; /* Button bilkul round */
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-btn:hover {
+  transform: scale(1.05);
+}
+
+/* --- Right Panel (Filters) --- */
+.right-panel {
+  width: 260px; 
+  background: #ffffff;
+  border-left: 1px solid #e2e8f0;
+  padding: 2rem; 
+  overflow-y: auto;
+  transition: margin-right 0.3s ease, opacity 0.3s ease;
+}
+
+.right-panel.collapsed {
+  margin-right: -260px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.right-panel h3 {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.filter-group {
+  margin-bottom: 1.8rem; 
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-group select,
+.filter-group input.date-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s, background 0.2s;
+}
+
+.filter-group select:focus,
+.filter-group input.date-input:focus {
+  border-color: var(--accent-1);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.quick-filter {
+  width: 100%;
+  padding: 12px;
+  background: var(--gradient-main);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+  transition: transform 0.2s;
+}
+
+.quick-filter:hover {
+  transform: translateY(-2px);
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Intelligence Chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="new_chat.css"> <!-- CSS file link -->
+</head>
+<body>
+
+  <div class="app">
+    <!-- Sidebar (Same as before) -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo">
+          <div class="logo-icon">🧠</div>
+          <h2>Strategic Intel</h2>
+        </div>
+
+        <button class="new-chat" onclick="window.location.href='new_chat.html'">＋ New Intelligence Chat</button>
+
+        <div class="section-title">Today</div>
+        <div class="chat-item">Global Technology Disruptions</div>
+        <div class="chat-item">Pakistan Economic Outlook</div>
+
+        <div class="section-title">Yesterday</div>
+        <div class="chat-item">Cybersecurity Threats</div>
+      </div>
+    </aside>
+
+    <!-- Main Chat Area -->
+    <div class="main-wrapper">
+      <main class="chat-main-content">
+        
+        <!-- Empty State / Watermark (Initially Visible) -->
+        <div class="empty-state" id="emptyState">
+          <div class="watermark-icon">🧠</div>
+          <h2>Explore your thoughts with us</h2>
+          <p>Whenever you're ready</p>
+        </div>
+
+        <!-- Error Message (Hidden Initially) -->
+        <div class="error-msg" id="errorMsg">
+          Please write something to continue 😊! 
+        </div>
+
+        <!-- Chat History Area (Messages yahan ayenge) -->
+        <div class="chat-history" id="chatHistory" style="display: none;"></div>
+
+        <!-- Input Box (Sticky at bottom) -->
+        <div class="chat-input-wrapper">
+          <div class="question-box" style="position: relative;">
+            <input type="text" id="chatInput" placeholder="Ask Strategic Intelligence Question..." autocomplete="off">
+            <button class="send-btn" onclick="handleSend()">➤</button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    const input = document.getElementById('chatInput');
+    const emptyState = document.getElementById('emptyState');
+    const errorMsg = document.getElementById('errorMsg');
+    const chatHistory = document.getElementById('chatHistory');
+
+    // Jab user type kare, watermark chhup jaye aur error message hide ho jaye
+    input.addEventListener('input', () => {
+      if (input.value.trim() !== "") {
+        emptyState.style.display = 'none';
+        errorMsg.style.display = 'none';
+      } else {
+        emptyState.style.display = 'flex';
+      }
+    });
+
+    // Send Function
+    function handleSend() {
+      const text = input.value.trim();
+
+      if (text === "") {
+        // Agar input khali hai, error dikhao
+        errorMsg.style.display = 'block';
+        emptyState.style.display = 'none';
+      } else {
+        // Agar input mein text hai, use chat history mein add karo
+        errorMsg.style.display = 'none';
+        emptyState.style.display = 'none';
+        chatHistory.style.display = 'block';
+
+        // User message add karna
+        const userMsg = document.createElement('div');
+        userMsg.classList.add('message', 'user-message');
+        userMsg.textContent = text;
+        chatHistory.appendChild(userMsg);
+
+        // Input clear karna
+        input.value = '';
+
+        // Auto scroll to bottom
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+      }
+    }
+
+    // Enter key se send hone ka logic
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        handleSend();
+      }
+    });
+  </script>
+</body>
+</html>

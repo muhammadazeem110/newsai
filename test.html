@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strategic Intelligence Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="test.css">
+ <script src="fyp.js"></script>
+</head>
+<body>
+
+  <div class="app">
+
+        <aside class="sidebar">
+      <div>
+        <div class="logo">
+          <div class="logo-icon">🧠</div>
+          <h2>Strategic Intel</h2>
+        </div>
+    <a href="new_chat.html">
+        <button class="new-chat">＋ New Intelligence Chat</button>
+        </a>
+        <div class="section-title">Today</div>
+        <div class="chat-item">Global Technology Disruptions</div>
+        <div class="chat-item">Pakistan Economic Outlook</div>
+        <div class="chat-item">AI Governance Updates</div>
+
+        <div class="section-title">Yesterday</div>
+        <div class="chat-item">Cybersecurity Threats</div>
+        <div class="chat-item">Regional Geopolitics Brief</div>
+
+        <div class="section-title">Previous 7 Days</div>
+        <div class="chat-item">Climate Change Impact</div>
+        <div class="chat-item">Defense Technology Trends</div>
+        <div class="chat-item">Economic Sanctions Review</div>
+
+        <div style="margin-top: 2rem; border-top: 1px solid #e5e5e5; padding-top: 1rem;">
+          <a href="profile.html" style="text-decoration:none; color:inherit;">
+            <div class="chat-item1">👤 Profile</div>
+          </a>
+          <a href="setting.html" style="text-decoration:none; color:inherit;">
+            <div class="chat-item1">⚙️ Settings</div>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+
+      <main class="main-content">
+
+        
+
+        <h1 class="page-title">Strategic Intelligence News</h1>
+
+        <section class="summary-card">
+
+          <div class="summary-header">
+            <div class="summary-left">
+              <div class="summary-icon">🧠</div>
+
+              <div>
+                <h3>Latest Intelligence Brief Summary</h3>
+                <div class="summary-meta">🕒 Updated 15 minutes ago</div>
+              </div>
+            </div>
+
+            <div class="priority">High Priority</div>
+          </div>
+
+          <p>
+          The war between the United States and Iran began on February 28, 2026, with joint U.S.-Israeli airstrikes aimed at crippling Iran's military command and nuclear program.
+          </p>
+
+          <p>
+            The initial U.S. strategy, described as a "decapitation strike," sought to fracture the Iranian regime, but this plan has largely failed, and Iran has successfully resisted external pressure 
+          </p>
+
+          <p>
+            As of May 9, 2026, the conflict is in a highly volatile state, with a fragile month-long ceasefire holding tenuously as both sides engage in military clashes and diplomatic negotiations through Pakistani mediators
+          </p>
+              <a href="fullbreif.html">
+            <button class="btn1 btn-green1"> Full Brief →</button>
+            </a>
+
+        </section>
+
+        <section class="cards-grid">
+
+          <div class="intel-card">
+            <div class="intel-top">
+              <div class="intel-icon blue">✺</div>
+              <h4>Technology</h4>
+            </div>
+
+            <div class="intel-list">
+              <div class="intel-item">
+                <div class="dot" style="color:#2563eb"></div>
+                <span>F-35 onboard mission systems and electronic warfare suite* breakthroughs announced by major defense labs could accelerate enemy radar decryption and jamming timelines.</span>
+              </div>
+
+              <div class="intel-item">
+                <div class="dot" style="color:#2563eb"></div>
+                <span>F-35 autonomic logistics information system (ALIS) and next-generation ODIN* report unprecedented surge in combat data processing amid digital transformation of stealth fleet operations</span>
+              </div>
+
+              <div class="intel-item">
+                <div class="dot" style="color:#2563eb"></div>
+                <span> Adversary near-peer stealth fighters leverage novel AI-driven electronic attack vectors targeting F-35 sensor fusion and distributed aperture system (DAS).</span>
+              </div>
+            </div>
+            <a href="technolgy.html">
+            <button class="btn btn-blue">View Technology Brief →</button>
+            </a>
+          </div>
+         
+          <div class="intel-card">
+            <div class="intel-top">
+              <div class="intel-icon green">🌐</div>
+              <h4>International</h4>
+            </div>
+
+            <div class="intel-list">
+              <div class="intel-item">
+                <div class="dot" style="color:#16a34a"></div>
+                <span>The United States is simultaneously navigating multiple international challenges beyond the Middle East, including a high-stakes confrontation with China over Taiwan, a protracted war of attrition in Ukraine that is straining NATO unity, and growing concerns about North Korea's advancing missile capabilities.</span>
+              </div>
+
+              <div class="intel-item">
+                <div class="dot" style="color:#16a34a"></div>
+                <span>Meanwhile, global institutions like the United Nations are struggling to maintain relevance as great power rivalries paralyze decision-making</span>
+              </div>
+
+              <div class="intel-item">
+                <div class="dot" style="color:#16a34a"></div>
+                <span>These overlapping crises are forcing Washington to make difficult strategic choices about where to allocate limited military and diplomatic resources</span>
+              </div>
+            </div>
+                <a href="international.html">
+            <button class="btn btn-green">View International Brief →</button>
+            </a>
+          </div>
+         
+        </section>
+
+        <!-- New Toggle Button for the Right Panel -->
+  <button class="toggle-panel-btn" onclick="toggleRightPanel()">
+      ⚙️ Filters
+  </button>
+
+  
+  
+  <!-- ... (Your Summary Card and Grid code goes here) ... -->
+
+  <div class="question-box" style="position: relative;"> 
+    <input type="text" placeholder="Ask Strategic Intelligence Question..."> 
+    <button class="send-btn">➤</button> 
+  </div>
+
+
+      </main>
+
+      <aside class="right-panel" id="rightPanel" >
+        <h3>Refine Category</h3>
+
+        <div class="filter-group">
+          <label>Category</label>
+          <select>
+            <option>All Categories</option>
+            <option>Technology</option>
+            <option>International</option>
+            <option>Cybersecurity</option>
+            <option>View Trends</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+
+        <label>Start Date</label>
+
+        <input type="date" class="date-input">
+
+        </div>
+
+        <div class="filter-group">
+
+        <label>End Date</label>
+
+        <input type="date" class="date-input">
+
+        </div>
+
+          <button class="quick-filter">Search</button>
+        <br></br>
+        
+        <div class="filter-group">
+          <label>Quick Filters</label>
+          <button class="quick-filter">Last 24 Hours</button>
+        </div>
+
+        
+
+      </aside>
+
+    </div>
+
+  </div>
+  
+
+
+</body>
+</html>

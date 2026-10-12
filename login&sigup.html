@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Strategic Intelligence Login</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="login&sigup.css">
+</head>
+
+<body>
+
+  <div class="auth-container">
+
+    <!-- LOGIN FORM -->
+
+    <div class="auth-card" id="loginForm">
+
+      <div class="logo-box">
+        🧠
+      </div>
+
+      <h1>
+        Strategic Intelligence News
+      </h1>
+
+      <p class="subtitle">
+        Welcome back! Please login to continue
+      </p>
+
+      <!-- EMAIL -->
+
+      <div class="input-group">
+
+        <label>Email Address</label>
+
+        <div class="input-box">
+          <span>✉</span>
+
+          <input type="email" placeholder="you@example.com">
+        </div>
+
+      </div>
+
+      <!-- PASSWORD -->
+
+      <div class="input-group">
+
+        <label>Password</label>
+
+        <div class="input-box active-input">
+
+          <span>🔒</span>
+
+          <input type="password" placeholder="Enter your password">
+
+          <span class="eye">👁</span>
+
+        </div>
+
+      </div>
+
+      <div class="forgot">
+        Forgot Password?
+      </div>
+      <a href="fyp.html">
+      <button class="auth-btn">
+        Login
+      </button>
+      </a>
+      <div class="divider"></div>
+
+      <div class="bottom-text">
+        Don't have an account?
+
+        <span onclick="showSignup()">
+          Sign Up
+        </span>
+      </div>
+
+    </div>
+
+    <!-- SIGNUP FORM -->
+
+    <div class="auth-card hidden" id="signupForm">
+
+      <div class="logo-box">
+        🧠
+      </div>
+
+      <h1>
+        Create Account
+      </h1>
+
+      <p class="subtitle">
+        Join Strategic Intelligence Platform
+      </p>
+
+      <!-- NAME -->
+
+      <div class="input-group">
+
+        <label>Full Name</label>
+
+        <div class="input-box">
+
+          <span>👤</span>
+
+          <input type="text" placeholder="Enter your name">
+
+        </div>
+
+      </div>
+
+      <!-- EMAIL -->
+
+      <div class="input-group">
+
+        <label>Email Address</label>
+
+        <div class="input-box">
+
+          <span>✉</span>
+
+          <input type="email" placeholder="you@example.com">
+
+        </div>
+
+      </div>
+
+      <!-- PASSWORD -->
+
+      <div class="input-group">
+
+        <label>Password</label>
+
+        <div class="input-box active-input">
+
+          <span>🔒</span>
+
+          <input type="password" placeholder="Create password">
+
+          <span class="eye">👁</span>
+
+        </div>
+
+      </div>
+      <a href="fyp.html">
+      <button class="auth-btn">
+        Create Account
+      </button>
+      </a>
+      <div class="divider"></div>
+
+      <div class="bottom-text">
+
+        Already have an account?
+
+        <span onclick="showLogin()">
+          Login
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="login&sigup.js"></script>
+
+</body>
+</html>
